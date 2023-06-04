@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Helmet } from 'react-helmet';
+import { BrowserRouter } from 'react-router-dom';
+
 
 
 
@@ -15,7 +17,8 @@ root.render(
       <meta property="og:description" content="/" />
       <meta property="og:image" content="/" />
     </Helmet>
-
+    <BrowserRouter>
     <App />
+    </BrowserRouter>
     </div>
 );
