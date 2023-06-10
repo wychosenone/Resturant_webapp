@@ -8,9 +8,12 @@ import { BrowserRouter } from 'react-router-dom';
 
 
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <div>
+    <script src="https://raw.githubusercontent.com/Meta-Front-End-Developer-PC/capstone/master/api.js"></script>
   <Helmet>
       <meta name="description" content="/" />
       <meta property="og:title" content="/" />

@@ -1,8 +1,9 @@
+
 .header {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: auto; /* Adjust the height as needed */
+  height: auto; 
 }
 .logo {
   width:100px;
@@ -34,7 +35,7 @@
 }
 
 .nav-list a:hover {
-  color: yellowgreen; /* Change the color to your desired hover color */
+  color: yellowgreen; 
 }
 
 
@@ -45,9 +46,108 @@
   width: 100%;
   display:grid;
   place-items: center;
-  /* Add your desired styles for the footer */
+
 }
 .footer-p{
   margin-bottom: 0;
 
+}
+
+.cart-icon {
+  position: fixed;
+  right: 20px;
+  bottom: 60px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.cart-overlay {
+  position: fixed;
+  right: 20px;
+  bottom: 120px;
+  width: 300px;
+  background: #f8f9fa;
+  border: 1px solid #ccc;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  z-index: 5;
+}
+
+.close-cart-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.2em;
+}
+
+.cart-title {
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.cart-items {
+  list-style: none;
+  padding: 0;
+}
+
+.cart-item {
+  margin-bottom: 10px;
+}
+
+.cart-total {
+  text-align: right;
+  font-weight: bold;
+}
+.card {
+  padding: 10px;
+  margin: 10px;
+}
+.card-img-top {
+  width: 100%;
+  height: auto;
+}
+.increment-btn {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: black;
+  border: none;
+  cursor: pointer;
+  margin-left:10px;
+}
+.decrement-btn {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: black;
+  border: none;
+  cursor: pointer;
+  margin-right:10px;
+}
+
+
+.increment-btn, .decrement-btn {
+  margin: 0 5px;
+}
+.check-out, .clear-cart-btn {
+  background-color: rgba(22, 23, 23, 0.1);
+  color: black;
+  border: none;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.clear-cart-btn {
+  background-color: red;
+}
+.clear-cart-btn:hover {
+  color:white;
+}
+.check-out:hover {
+  color:white;
 }
