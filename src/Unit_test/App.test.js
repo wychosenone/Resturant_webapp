@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect'; // Import the necessary matcher
 
-import BookingForm from './Component/BookingForm';
+import BookingForm from '../Component/BookingForm';
 
 test('renders the "Choose date" label correctly', () => {
   render(

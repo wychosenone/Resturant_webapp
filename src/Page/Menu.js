@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Cart } from 'react-bootstrap-icons';
-import Item1 from '../item1.jpg';
-import Item2 from '../item2.jpg';
-import Item3 from '../item3.jpg';
-import Item4 from '../item4.jpg';
-import Item5 from '../item5.jpg';
+import Item1 from '../Assets/item1.jpg';
+import Item2 from '../Assets/item2.jpg';
+import Item3 from '../Assets/item3.jpg';
+import Item4 from '../Assets/item4.jpg';
+import Item5 from '../Assets/item5.jpg';
 
 function Menu() {
   const menuItems = [

@@ -1,5 +1,5 @@
-import { fetchAPI } from './Api';
-import { initializeTimes, updateTimes } from './Component/Main';
+import { fetchAPI } from '../Api';
+import { initializeTimes, updateTimes } from '../Component/Main';
 
 jest.mock('./Api', () => ({
   fetchAPI: jest.fn(() => Promise.resolve(['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'])),

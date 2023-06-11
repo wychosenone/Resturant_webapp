@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ProgressBar } from 'react-bootstrap';
+
 export default function BookingForm({
   timeSlots,
   availableTimes,
@@ -22,40 +23,42 @@ export default function BookingForm({
   const [occasionError, setOccasionError] = useState('');
 
   const validateForm = (e) => {
-      e.preventDefault();
-      setDateError('');
-      setTimeError('');
-      setNumberError('');
-      setOccasionError('');
+    e.preventDefault();
+    setDateError('');
+    setTimeError('');
+    setNumberError('');
+    setOccasionError('');
 
-      let hasError = false;
+    let hasError = false;
 
-      if (!selectedDate) {
-          setDateError('Please select a date.');
-          hasError = true;
-      }
+    if (!selectedDate) {
+      setDateError('Please select a date.');
+      hasError = true;
+    }
 
-      if (!selectedTime) {
-          setTimeError('Please select a time.');
-          hasError = true;
-      }
+    if (!selectedTime) {
+      setTimeError('Please select a time.');
+      hasError = true;
+    }
 
-      if (!selectedNumber) {
-          setNumberError('Please enter the number of guests.');
-          hasError = true;
-      }
+    if (!selectedNumber) {
+      setNumberError('Please enter the number of guests.');
+      hasError = true;
+    }
 
-      if (!selectedOccasion) {
-          setOccasionError('Please select an occasion.');
-          hasError = true;
-      }
+    if (!selectedOccasion) {
+      setOccasionError('Please select an occasion.');
+      hasError = true;
+    }
 
-      if (hasError) {
-          return;
-      }
+    if (hasError) {
+      return;
+    }
 
-      submitForm(e);
+    submitForm(e);
   }
+
+  const isFormValid = selectedDate && selectedTime && selectedNumber && selectedOccasion;
 
   return (
     <div className="d-flex justify-content-center">
@@ -140,12 +143,13 @@ export default function BookingForm({
           </select>
           {occasionError && <span className="text-danger">{occasionError}</span>}
         </div>
+
         {isLoading ? (
           <div className="text-center">
             <ProgressBar animated now={progress} label={`${progress}%`} />
           </div>
         ) : (
-          <button type="submit" className="btn btn-primary mt-3">
+          <button type="submit" aria-label="On Click" className="btn btn-primary mt-3" disabled={!isFormValid}>
             Make Your Reservation
           </button>
         )}
