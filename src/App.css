@@ -153,3 +153,7 @@ max-width: 100%;
 .check-out:hover {
   color:white;
 }
+.card-img-top {
+  height: 200px; /* Adjust the desired height */
+  object-fit: cover;
+}

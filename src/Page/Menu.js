@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { Cart } from 'react-bootstrap-icons';
-import Item1 from '../Assets/item1.jpg';
-import Item2 from '../Assets/item2.jpg';
-import Item3 from '../Assets/item3.jpg';
+import Item1 from '../Assets/greek_salad.jpg';
+import Item2 from '../Assets/bruchetta.svg';
+import Item3 from '../Assets/lemon_dessert.jpg';
 import Item4 from '../Assets/item4.jpg';
-import Item5 from '../Assets/item5.jpg';
+
+
 
 function Menu() {
   const menuItems = [
-    { id: 1, name: 'Item 1', price: 10, photo: Item1 },
-    { id: 2, name: 'Item 2', price: 12, photo: Item2 },
-    { id: 3, name: 'Item 3', price: 8, photo: Item3 },
-    { id: 4, name: 'Item 4', price: 15, photo: Item4 },
-    { id: 5, name: 'Item 5', price: 9, photo: Item5 },
+    { id: 1, name: 'Greek Salad', price: 10, photo: Item1 },
+    { id: 2, name: 'Bruchetta', price: 12, photo: Item2 },
+    { id: 3, name: 'Lemon Dessert', price: 8, photo: Item3 },
+    { id: 4, name: 'Roasted Chicken', price: 15, photo: Item4 },
   ];
 
   const [cart, setCart] = useState(menuItems.reduce((obj, item) => ({ ...obj, [item.id]: 0 }), {}));
@@ -30,7 +30,7 @@ function Menu() {
 
   return (
     <div>
-      <h2 className="text-center mt-4 mb-4">Menu</h2>
+      <h2 className="text-center mt-4 mb-4" style={{ fontFamily: 'Verdana', fontSize: '24px', fontStyle: 'italic' }}>Menu</h2>
       <div className="row">
         {menuItems.map(item => (
           <div key={item.id} className="col-md-6 col-lg-4 mb-4">

@@ -1,4 +1,4 @@
-import logo from './Assets/Little_Lemon.jpg';
+import logo from './Assets/Logo.svg';
 import './App.css';
 
 
