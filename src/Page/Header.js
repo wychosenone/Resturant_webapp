@@ -1,5 +1,5 @@
-import logo from './Assets/Logo.svg';
-import './App.css';
+import logo from '../Assets/Logo.svg';
+import '../App.css';
 
 
 

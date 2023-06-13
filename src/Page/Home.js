@@ -6,7 +6,7 @@ import chef2Image from '../Assets/Mario and Adrian b.jpg';
 function Home() {
   return (
     <div className="container">
-      <div className="row">
+      <div className="row mx-auto">
         <div className="col-md-12 text-center mt-5">
           <h2 className="mb-4" style={{ fontFamily: 'Verdana', fontSize: '24px', fontStyle: 'italic' }}>
             Welcome to our Restaurant
