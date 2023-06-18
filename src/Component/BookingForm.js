@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { ProgressBar } from 'react-bootstrap';
 
 export default function BookingForm({
@@ -12,53 +11,15 @@ export default function BookingForm({
   setSelectedOccasion,
   selectedNumber,
   setSelectedNumber,
-  submitForm,
   occasion,
   isLoading,
   progress,
+  dateError, setDateError,
+  timeError, setTimeError,
+  numberError, setNumberError,
+  occasionError, setOccasionError,
+  validateForm, isFormValid
 }) {
-  const [dateError, setDateError] = useState('');
-  const [timeError, setTimeError] = useState('');
-  const [numberError, setNumberError] = useState('');
-  const [occasionError, setOccasionError] = useState('');
-
-  const validateForm = (e) => {
-    e.preventDefault();
-    setDateError('');
-    setTimeError('');
-    setNumberError('');
-    setOccasionError('');
-
-    let hasError = false;
-
-    if (!selectedDate) {
-      setDateError('Please select a date.');
-      hasError = true;
-    }
-
-    if (!selectedTime) {
-      setTimeError('Please select a time.');
-      hasError = true;
-    }
-
-    if (!selectedNumber) {
-      setNumberError('Please enter the number of guests.');
-      hasError = true;
-    }
-
-    if (!selectedOccasion) {
-      setOccasionError('Please select an occasion.');
-      hasError = true;
-    }
-
-    if (hasError) {
-      return;
-    }
-
-    submitForm(e);
-  }
-
-  const isFormValid = selectedDate && selectedTime && selectedNumber && selectedOccasion;
 
   return (
     <div className="d-flex justify-content-center">

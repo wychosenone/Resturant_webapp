@@ -1,7 +1,8 @@
-import React, { useState, useReducer, useEffect } from 'react';
+import React, { useState, useReducer, useEffect, useContext} from 'react';
 import { useNavigate } from 'react-router-dom';
 import BookingForm from './BookingForm';
 import { fetchAPI, submitAPI } from '../Api';
+import { UserContext } from '../UserContext';
 
 export const timeSlots = [
   '17:00',
@@ -41,6 +42,12 @@ export default function Main() {
   const navigate = useNavigate();
   const [isLoading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [dateError, setDateError] = useState('');
+  const [timeError, setTimeError] = useState('');
+  const [numberError, setNumberError] = useState('');
+  const [occasionError, setOccasionError] = useState('');
+  const { username } = useContext(UserContext)
+  const { signInStatus } = useContext(UserContext);
 
   useEffect(() => {
     const updatedTimes = initializeTimes(selectedDate);
@@ -49,19 +56,26 @@ export default function Main() {
 
   const submitForm = (e) => {
     e.preventDefault();
+    if (!signInStatus) {
+        alert('You must be signed in to make a reservation.');
+        return;
+      }
+
+
     const formData = {
       selectedDate,
       selectedTime,
       selectedNumber,
       selectedOccasion,
     };
-    let reservations = JSON.parse(localStorage.getItem('reservations')) || [];
-  if (submitAPI(formData)) {
-    reservations.push(formData);
-    localStorage.setItem('reservations', JSON.stringify(reservations));
-  } else {
-    alert('Reservation failed. Please try again.')
-  }
+    // use username as a key to store the booking
+    let reservations = JSON.parse(localStorage.getItem(`${username}-reservations`)) || [];
+    if (submitAPI(formData)) {
+      reservations.push(formData);
+      localStorage.setItem(`${username}-reservations`, JSON.stringify(reservations));
+    } else {
+      alert('Reservation failed. Please try again.')
+    }
     console.log(formData);
     submitAPI(formData);
 
@@ -91,6 +105,43 @@ export default function Main() {
     const updatedTimes = initializeTimes(date);
     dispatchTimes({ type: 'UPDATE_TIMES', payload: updatedTimes });
   };
+  const validateForm = (e) => {
+    e.preventDefault();
+    setDateError('');
+    setTimeError('');
+    setNumberError('');
+    setOccasionError('');
+
+    let hasError = false;
+
+    if (!selectedDate) {
+      setDateError('Please select a date.');
+      hasError = true;
+    }
+
+    if (!selectedTime) {
+      setTimeError('Please select a time.');
+      hasError = true;
+    }
+
+    if (!selectedNumber) {
+      setNumberError('Please enter the number of guests.');
+      hasError = true;
+    }
+
+    if (!selectedOccasion) {
+      setOccasionError('Please select an occasion.');
+      hasError = true;
+    }
+
+    if (hasError) {
+      return;
+    }
+
+    submitForm(e);
+  }
+
+  const isFormValid = selectedDate && selectedTime && selectedNumber && selectedOccasion;
 
   return (
     <div>
@@ -110,6 +161,16 @@ export default function Main() {
         occasion={occasion}
         isLoading={isLoading}
         progress={progress}
+        dateError={dateError}
+        setDateError={setDateError}
+        timeError={timeError}
+        setTimeError={setTimeError}
+        numberError={numberError}
+        setNumberError={setNumberError}
+        occasionError={occasionError}
+        setOccasionError={setOccasionError}
+        isFormValid={isFormValid}
+        validateForm={validateForm}
       />
     </div>
   );
