@@ -91,16 +91,21 @@ function Menu() {
           <button onClick={toggleCart} className="close-cart-btn">X</button>
           <h3 className="cart-title">Shopping Cart</h3>
           <ul className="cart-items">
-            {menuItems.map(item => (
-              cart[item.id] > 0 && (
-                <li key={item.id} className="cart-item">
-                  <span>{item.name}: {cart[item.id]} x ${item.price} = ${cart[item.id] * item.price}</span>
-                  <button className="decrement-btn" onClick={() => adjustQuantity(item.id, -1)}>-</button>
-                  <button className="increment-btn" onClick={() => adjustQuantity(item.id, 1)}>+</button>
-                </li>
-              )
-            ))}
-          </ul>
+  {Object.keys(cart).map(itemId => {
+    const item = menuItems.find(item => item.id === parseInt(itemId));
+    if (cart[itemId] > 0) {
+      return (
+        <li key={item.id} className="cart-item">
+          <span>{item.name}: {cart[itemId]} x ${item.price} = ${cart[itemId] * item.price}</span>
+          <button className="decrement-btn" onClick={() => adjustQuantity(item.id, -1)}>-</button>
+          <button className="increment-btn" onClick={() => adjustQuantity(item.id, 1)}>+</button>
+        </li>
+      );
+    }
+    return null;
+  })}
+</ul>
+
           <h4 className="cart-total">Total: ${total}</h4>
           <button onClick={() => setCart(menuItems.reduce((obj, item) => ({ ...obj, [item.id]: 0 }), {}))} className="clear-cart-btn">Clear Cart</button>
           <button className="check-out" onClick={handleCheckOut}>Check out</button>
